@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Prijava</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <p>Vnsei svoj email</p>
+    <input id="email" type="text">
+    <p>Vnesite geslo</p>
+    <input id="geslo" type="text">
+    <p>Vnesite svoje ime</p>
+    <input id="ime" type="text">
+    <p>Vnesite vašo državo</p>
+    <input id="država" type="text">
+
+    <button onclick="prijavi()">Prijavi me</button>
+</body>
+</html>
+<script>
+function prijava(){
+    var mail = document.getElementById("emali").value;
+    var geslo = document.getElementById("geslo").value;
+    var ime = document.getElementById("ime").value;
+    var država = document.getElementById("država").value;
+
+    $.ajax({
+    url: "/ApiRegistacija",
+    method: "POST",
+    data: {
+        mail: email,
+        pass: geslo,
+        name: ime,
+        country: država
+    },
+    success: function( result ) {
+        $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+    }
+    });
+}
+</script>
